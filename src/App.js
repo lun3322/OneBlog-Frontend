@@ -1,37 +1,31 @@
-import React from 'react';
-import './App.css';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
+import {Breadcrumb, Layout} from 'antd';
+import React, {Component} from "react";
+import './App.less'
+import Navigation from "./components/Navigation";
 
-function App() {
+const {Header, Content, Footer} = Layout;
+
+class App extends Component {
+  render() {
     return (
-        <Router>
-            <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/login">login</Link>
-                        </li>
-                    </ul>
-                </nav>
-
-                <Switch>
-                    <Route exact path="/">
-                        <Home/>
-                    </Route>
-                    <Route path="/login">
-                        <Login/>
-                    </Route>
-                </Switch>
+      <Layout style={{minHeight: '100vh'}}>
+        <Navigation/>
+        <Layout className="site-layout">
+          <Header className="site-layout-background" style={{padding: 0}}/>
+          <Content style={{margin: '0 16px'}}>
+            <Breadcrumb style={{margin: '16px 0'}}>
+              <Breadcrumb.Item>User</Breadcrumb.Item>
+              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            </Breadcrumb>
+            <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
+              Bill is a cat.
             </div>
-        </Router>
+          </Content>
+          <Footer style={{textAlign: 'center'}}>Ant Design ©2018 Created by Ant UED</Footer>
+        </Layout>
+      </Layout>
     );
+  }
 }
 
 export default App;
